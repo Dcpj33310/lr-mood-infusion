@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LR Health and Beauty - Parfums selon votre humeur | Collection Mood Infusion</title>
+    <meta name="description" content="Découvrez les parfums LR Mood Infusion qui éveillent vos émotions. Questionnaire personnalisé pour trouver le parfum idéal selon votre humeur du jour.">
+    <meta name="keywords" content="parfums LR, Mood Infusion, parfum selon humeur, LR Health and Beauty, parfum femme, parfum homme, fragrance émotionnelle">
+    <meta name="author" content="LR Health and Beauty">
+    <!-- Open Graph -->
+    <meta property="og:title" content="LR Health and Beauty - Parfums selon votre humeur">
+    <meta property="og:description" content="Trouvez le parfum qui correspond à votre humeur avec la collection Mood Infusion">
+    <meta property="og:type" content="website">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B7355; /* Brun doré élégant */
+            --secondary-color: #2C3E50; /* Bleu foncé sophistiqué */
+            --accent-color: #C19A6B; /* Beige doré chaleureux */
+            --light-color: #F8F9FA;
+            --dark-color: #343A40;
+            --success-color: #5a645c;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: #fefefe;
+            line-height: 1.6;
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary-color) !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(43, 62, 80, 0.8), hsla(209, 30%, 24%, 0.8)), url('images/Head_hero_lr_mood_infusion.png') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 140px 0;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .hero-section .lead {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 12px;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+        .parfum-card {
+            border: none;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        .parfum-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .parfum-card .card-img-top {
+            height: 200px;
+            display: block;
+            margin: auto;
+            width: 40%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .parfum-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        .parfum-card .card-body {
+            padding: 25px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .parfum-card .card-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        /* === CORRECTION COMPLÈTE DES BOUTONS .btn-primary === */
+        .btn-primary,
+        .btn-primary:link,
+        .btn-primary:visited,
+        .btn-primary:focus,
+        .btn-primary.focus,
+        .btn-primary:active,
+        .btn-primary.active,
+        .btn-primary.dropdown-toggle.show {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            color: white !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+        }
+        .btn-outline-primary {
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            background-color: transparent !important;
+            transition: all 0.3s;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+        }
+        .btn-outline-primary:focus,
+        .btn-outline-primary.focus,
+        .btn-outline-primary:active,
+        .btn-outline-primary.active {
+            color: white !important;
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+        .btn-lg {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+        .questionnaire-section {
+            background-color: var(--light-color);
+            padding: 80px 0;
+        }
+        .question {
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .question h4 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .option-card {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .option-card:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(139, 115, 85, 0.05);
+            transform: translateY(-5px);
+        }
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(139, 115, 85, 0.1);
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.1);
+        }
+        .option-card h5 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        .result-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .result-card {
+            max-width: 900px; /* ✅ Agrandi */
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .result-card .card-body {
+            padding: 40px;
+        }
+        .footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .footer a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: white;
+        }
+        .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.3rem;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-color);
+        }
+        .badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 10px;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .quiz-progress {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .progress-step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .progress-step.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .progress-step.completed {
+            background-color: var(--success-color);
+            color: white;
+        }
+        .parfum-details {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .notes-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .note-type {
+            flex: 1;
+            padding: 15px;
+            background-color: rgba(139, 115, 85, 0.05);
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+        .note-type h6 {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .intensity-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section .lead {
+                font-size: 1.1rem;
+            }
+            .notes-section {
+                flex-direction: column;
+            }
+            .note-type {
+                margin: 5px 0;
+            }
+            .result-card {
+                max-width: 100%;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        /* ✅ Alignement à gauche UNIQUEMENT pour la description dans le résultat */
+        #result-content .col-md-7 > p:first-of-type {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-spa me-2"></i>LR Health and Beauty
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#parfums">Nos Parfums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#questionnaire">Trouver mon parfum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#boutique">Acheter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#avis">Avis clients</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4 fade-in">Trouvez le parfum qui correspond à votre humeur</h1>
+            <p class="lead mb-4 fade-in">Découvrez la collection exclusive LR MOOD INFUSION, des fragrances conçues pour éveiller vos émotions et refléter votre personnalité unique. Plus qu'un parfum, une expérience sensorielle.</p>
+            <a href="#questionnaire" class="btn btn-primary btn-lg fade-in">Trouver mon parfum idéal</a>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="section-title">LR MOOD INFUSION : La science des émotions olfactives</h2>
+                    <p>Saviez-vous que l'odorat est le seul sens directement connecté à notre système limbique, le centre des émotions et de la mémoire ? Contrairement aux stimuli visuels ou auditifs, les odeurs ont un effet immédiat et intense sur notre état émotionnel.</p>
+                    <p>Avec <strong>MOOD INFUSION</strong>, LR a créé une collection de parfums qui ne se contente pas de sentir bon, mais qui vous connecte à l'émotion que vous souhaitez ressentir. Chaque fragrance a été méticuleusement développée pour évoquer des sentiments spécifiques : joie pure, paix intérieure, énergie vivifiante ou force confiante.</p>
+                    <p>Vous ne portez pas seulement un parfum, <strong>vous le ressentez</strong> !</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/parfum_modèle_lr_mood_infusion.png" alt="Collection de parfums LR Mood Infusion" class="img-fluid rounded shadow mx-auto d-block">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Pourquoi choisir LR MOOD INFUSION ?</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Émotions authentiques</h4>
+                    <p>Chaque parfum est conçu pour éveiller une émotion spécifique et vous connecter à votre état d'esprit du moment.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Ingrédients de qualité</h4>
+                    <p>Des huiles parfumées sélectionnées avec soin pour une expérience olfactive intense et durable.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h4>Personnalisation</h4>
+                    <p>Notre questionnaire vous guide vers le parfum qui correspond parfaitement à votre humeur et personnalité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parfums Section -->
+    <section id="parfums" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Découvrez notre collection exclusive</h2>
+            <p class="text-center mb-5">Des parfums pour chaque humeur, chaque personnalité, chaque moment de la vie. Explorez la nouvelle gamme complète de fragrances émotionnelles.</p>
+
+            <!-- Filtre -->
+            <div class="text-center mb-4">
+                <div class="btn-group mb-4" role="group" aria-label="Filtre par genre">
+                    <button type="button" class="btn btn-outline-primary active" data-filter="all">Tous</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="femme">Femme</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter="homme">Homme</button>
+                </div>
+            </div>
+
+            <!-- Grille des parfums avec espacement -->
+            <div class="row gx-4 gy-4" id="parfums-grid">
+                <!-- Les cartes seront générées dynamiquement -->
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#questionnaire" class="btn btn-primary">Trouver mon parfum idéal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questionnaire Section -->
+    <section id="questionnaire" class="questionnaire-section">
+        <div class="container">
+            <h2 class="section-title text-center">Trouvez le parfum parfait pour votre humeur</h2>
+            <p class="text-center mb-5">Répondez à ces 3 questions simples pour découvrir le parfum LR MOOD INFUSION qui correspond le mieux à votre état d'esprit du moment. <strong>98% de nos clients trouvent leur fragrance idéale avec ce test</strong>.</p>
+            <div class="quiz-progress">
+                <div class="progress-step active">1</div>
+                <div class="progress-step">2</div>
+                <div class="progress-step">3</div>
+            </div>
+            <div id="quiz-container">
+                <!-- Question 1 -->
+                <div class="question fade-in" id="question1">
+                    <h4><i class="fas fa-venus-mars me-2"></i>1. Quel est votre genre ?</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="femme">
+                                <h5>Femme</h5>
+                                <p>Je recherche un parfum féminin et élégant</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="homme">
+                                <h5>Homme</h5>
+                                <p>Je recherche un parfum masculin et sophistiqué</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="question" id="question2" style="display: none;">
+                    <h4><i class="fas fa-smile me-2"></i>2. Comment vous sentez-vous aujourd'hui ?</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="confiant">
+                                <h5>Confiant(e) et puissant(e)</h5>
+                                <p>Je veux montrer ma meilleure version, rayonner de assurance</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="seduisant">
+                                <h5>Séduisant(e) et mystérieux(se)</h5>
+                                <p>Je veux attirer les regards, créer une aura magnétique</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="calme">
+                                <h5>Calme et serein(e)</h5>
+                                <p>Je recherche l'harmonie, la paix intérieure et l'équilibre</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="energique">
+                                <h5>Énergique et aventurier(ère)</h5>
+                                <p>Je suis prêt(e) à relever des défis, plein(e) de vitalité</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="question" id="question3" style="display: none;">
+                    <h4><i class="fas fa-wind me-2"></i>3. Quel type de fragrance préférez-vous ?</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="fruite">
+                                <h5>Fruitée et fraîche</h5>
+                                <p>Notes d'agrumes, fruits juteux, légères et vivifiantes</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="florale">
+                                <h5>Florale et douce</h5>
+                                <p>Notes de fleurs délicates, poudrées, romantiques</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="boisee">
+                                <h5>Boisée et épicée</h5>
+                                <p>Notes de bois nobles, épices chaudes, cuir sophistiqué</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="option-card" data-value="orientale">
+                                <h5>Orientale et sensuelle</h5>
+                                <p>Notes de vanille, ambre envoûtant, musc sensuel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button id="prev-btn" class="btn btn-outline-secondary me-2" style="display: none;">
+                        <i class="fas fa-arrow-left me-1"></i>Précédent
+                    </button>
+                    <button id="next-btn" class="btn btn-primary">
+                        Suivant <i class="fas fa-arrow-right ms-1"></i>
+                    </button>
+                    <button id="result-btn" class="btn btn-outline-primary" style="display: none;">
+                        <i class="fas fa-magic me-1"></i>Voir mon résultat
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div id="result-section" class="result-section" style="display: none;">
+                <h2 class="section-title">Votre parfum idéal a été trouvé !</h2>
+                <div class="card result-card">
+                    <div class="card-body p-4">
+                        <div id="result-content">
+                            <!-- Le résultat sera affiché ici par JavaScript -->
+                        </div>
+                        <div class="mt-4">
+                            <button id="discover-parfum-btn" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-shopping-bag me-2"></i>Découvrir ce parfum
+                            </button>
+                            <button id="restart-quiz-btn" class="btn btn-outline-primary">
+                                <i class="fas fa-redo me-1"></i>Refaire le test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="avis" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Ils ont trouvé leur parfum idéal</h2>
+            <p class="text-center mb-5">Découvrez les expériences de nos clients avec <strong>LR MOOD INFUSION</strong></p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "J'ai toujours eu du mal à trouver un parfum qui me corresponde vraiment. Le questionnaire m'a guidée vers <strong>BE MAGICAL</strong> et c'est exactement ce que je cherchais ! Je me sens tellement féminine et confiante quand je le porte."
+                        </div>
+                        <div class="testimonial-author">- Sophie L., 34 ans</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "<strong>GET ADDICTED</strong> est devenu ma signature. Mes collègues me demandent toujours quel parfum je porte. Ce n'est pas juste une fragrance, c'est une véritable expérience sensorielle qui booste ma confiance en moi."
+                        </div>
+                        <div class="testimonial-author">- Thomas R., 41 ans</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Le concept des parfums selon l'humeur a changé ma relation avec les fragrances. Maintenant, j'ai plusieurs parfums LR pour différentes occasions et états d'esprit. <strong>STAY CALM</strong> est mon préféré pour les jours de stress."
+                        </div>
+                        <div class="testimonial-author">- Claire D., 29 ans</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique Section -->
+    <section id="boutique" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Prêt à trouver votre parfum idéal ?</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3>Comment appliquer votre parfum pour une tenue optimale</h3>
+                    <p>Le parfum se déploie mieux sur la peau, car la chaleur corporelle libère les molécules odorantes, rendant ainsi le parfum plus intense et plus durable.</p>
+                    <p>Le vaporiser sur les cheveux ou les vêtements peut également intensifier l'expérience olfactive. Cependant, il convient de tester au préalable le parfum sur une zone discrète, en particulier sur les tissus clairs et délicats, afin de vérifier s'il ne laisse pas de traces.</p>
+                    <ul>
+                        <li>Pulvérisez sur les poignets et derrière les oreilles</li>
+                        <li>Appliquez sur le cou et la base de la gorge</li>
+                        <li>Évitez de frotter les poignets après application</li>
+                        <li>Conservez votre parfum à l'abri de la lumière et de la chaleur</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="bg-light p-5 rounded shadow">
+                        <h3 class="mb-4">Accédez à notre boutique en ligne</h3>
+                        <p class="mb-4">Découvrez tous les parfums <strong>LR MOOD INFUSION</strong> et trouvez celui qui correspond à votre humeur du jour.</p>
+                        <a href="https://shop.lrworld.com/product/fr/fr/set_3x_mood_infusion_-_libre_choix.html?productAlias=30720-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D" target="_blank" rel="noopener" class="btn btn-primary btn-lg me-3">Visiter la boutique</a>
+                        <button id="restart-from-boutique" class="btn btn-outline-primary">Refaire le test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Questions fréquentes</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Combien de temps dure le parfum LR MOOD INFUSION sur la peau ?</h5>
+                    <p>La tenue varie selon votre type de peau, mais en moyenne les parfums durent entre 6 et 8 heures. Les notes de fond peuvent persister jusqu'à 12 heures sur certains épidermes.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Puis-je mélanger différents parfums de la collection ?</h5>
+                    <p>Absolument ! Nous encourageons même l'expérimentation. Les parfums sont conçus pour être complémentaires. Essayez par exemple de superposer BE MAGICAL avec ME IMPRESS pour une fragrance unique.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Les parfums LR sont-ils testés sur les animaux ?</h5>
+                    <p>Non, LR Health and Beauty s'engage contre les tests sur les animaux. Tous nos produits sont cruelty-free.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Comment conserver mon parfum pour préserver sa qualité ?</h5>
+                    <p>Conservez votre parfum à l'abri de la lumière directe et des variations de température. Une salle de bain n'est pas l'endroit idéal à cause de l'humidité et des changements de température.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5>À propos</h5>
+                    <p>
+                        <strong>David Jacquemet</strong><br>
+                        Vendeur à Domicile Indépendant (VDI)<br>
+                        Partenaire LR Health &amp; Beauty<br><br>
+                        Site personnel non officiel – Partenaire indépendant de la marque LR Health &amp; Beauty GmbH
+                    </p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h5>Contact</h5>
+                    <p>
+                        <i class="fas fa-envelope me-2"></i> dcpjcontact@gmail.com<br>
+                        <i class="fas fa-map-marker-alt me-2"></i> Basé en Nouvelle-Aquitaine, Lormont
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center">
+                <p>&copy; 2025 David Jacquemet – Vendeur à Domicile Indépendant LR Health &amp; Beauty</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // === Données des parfums ===
+            const parfumData = {
+                // === PARFUMS FEMME (11) ===
+                'BE MAGICAL': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30707-1/be_magical_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Envoûtante, royale, magique.</strong><br>&nbsp;<br>  
+                        Aujourd’hui, vous ne marchez pas — vous flottez. Votre présence irradie une aura presque surnaturelle, comme si le monde entier retenait son souffle à votre passage.<br>&nbsp;<br>  
+                        <strong>BE MAGICAL</strong> est votre élixir de féminité absolue : une ouverture pétillante de bergamote et de mandarine, adoucie par une touche inattendue de chocolat qui réchauffe l’âme. Puis vient le cœur — un nectar de fruit de la passion, de muguet et de miel — aussi doux qu’une promesse murmurée au crépuscule. Enfin, la barbe à papa, le patchouli et le bois de cèdre tissent une traîne invisible, sensuelle et mystérieuse.  
+                        Ce parfum ne se porte pas. Il se vit.  
+                        Prête à ensorceler le monde ?`,
+                    notes: {
+                        tete: 'Bergamote, Chocolat, Mandarine',
+                        coeur: 'Miel, Muguet, Fruit de la passion',
+                        fond: 'Barbe à papa, Patchouli, Bois de cèdre'
+                    },
+                    conseils: 'Parfait pour les soirées spéciales ou lorsque vous souhaitez vous sentir exceptionnelle.',
+                    intensite: 'Intense',
+                    duree: '8-10 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/be_magical_edp_pour_elle.html?productAlias=30707-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'ME IMPRESS': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30706-1/impress_me_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Héroïque, rayonnante, inébranlable.</strong><br>&nbsp;<br>  
+                        Vous n’attendez pas qu’on vous remarque — vous imposez votre lumière. Aujourd’hui, vous êtes prête à conquérir, inspirer, briller sans demander la permission.<br>&nbsp;<br>  
+                        <strong>ME IMPRESS</strong> est votre armure invisible : une explosion de bergamote et de cardamome qui réveille l’esprit, un cœur floral puissant où la rose, le jasmin et la prune dansent avec la fleur d’oranger, et une base chaude de vanille, de musc et d’ylang-ylang qui vous enveloppe comme une étreinte de confiance.  
+                        Ce n’est pas un parfum. C’est votre déclaration de puissance.  
+                        Le monde est prêt à vous applaudir.`,
+                    notes: {
+                        tete: 'Bergamote, Cardamome',
+                        coeur: 'Fleur d\'oranger, Rose, Prune, Jasmin',
+                        fond: 'Vanille, Ylang-ylang, Musc'
+                    },
+                    conseils: 'Idéal pour le travail ou les occasions importantes.',
+                    intensite: 'Intense',
+                    duree: '7-9 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/impress_me_edp_pour_elle.html?productAlias=30706-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'STAY CALM': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30705-1/stay_calm_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Apaisée, centrée, en harmonie.</strong><br>&nbsp;<br>  
+                        Vous avez choisi la douceur aujourd’hui. Pas celle de la passivité, mais celle de la paix intérieure — celle qui naît quand on cesse de lutter et qu’on se reconnecte à soi.<br>&nbsp;<br>  
+                        <strong>STAY CALM</strong> vous enveloppe comme une caresse : la mandarine et la prune apportent une fraîcheur fruitée et rassurante, les notes florales transparentes et l’iris créent une bulle de sérénité, tandis que le bois de santal et le musc ancrent votre esprit dans un calme profond.  
+                        Respirez. Souriez. Vous êtes exactement là où vous devez être.  
+                        La vie coule, douce et légère.`,
+                    notes: {
+                        tete: 'Mandarine, Prune, Notes solaires',
+                        coeur: 'Notes florales transparentes, Iris, Notes poudrées',
+                        fond: 'Bois de santal, Bois secs, Musc'
+                    },
+                    conseils: 'Parfait pour les jours stressants ou la méditation.',
+                    intensite: 'Plutôt discrète',
+                    duree: '6-8 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/stay_calm_edp_pour_elle.html?productAlias=30705-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'FEEL SAVAGE': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30704-1/feel_savage_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Libre, rebelle, indomptable.</strong><br>&nbsp;<br>  
+                        Vous refusez les règles qu’on vous impose. Aujourd’hui, vous suivez votre instinct, votre feu intérieur, cette étincelle sauvage qui ne s’éteint jamais.<br>&nbsp;<br>  
+                        <strong>FEEL SAVAGE</strong> est votre cri de liberté : un départ explosif de citron, d’orange et de pomme qui électrise les sens, un cœur subtil de thé, de rose et de notes vertes qui équilibre force et féminité, et une base de bois de cèdre et de musc qui laisse une trace de mystère et de détermination.  
+                        Soyez la tempête. Soyez la forêt. Soyez vous — sans filtre.`,
+                    notes: {
+                        tete: 'Citron, Orange, Pomme',
+                        coeur: 'Thé, Notes vertes, Rose',
+                        fond: 'Bois de cèdre, Musc'
+                    },
+                    conseils: 'Idéal pour les jours où vous vous sentez aventurier.',
+                    intensite: 'Plutôt discrète',
+                    duree: '6-8 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/feel_savage_edp_pour_elle.html?productAlias=30704-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'BIG THINK': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30701-1/think_big_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Audacieuse, visionnaire, illimitée.</strong><br>&nbsp;<br>  
+                        Vos rêves ne sont pas trop grands — le monde est juste trop petit pour les contenir. Aujourd’hui, vous osez imaginer l’impossible.<br>&nbsp;<br>  
+                        <strong>BIG THINK</strong> est votre invitation à dépasser les limites : une ouverture lumineuse d’agrumes et d’ylang-ylang qui éveille l’audace, un cœur floral-vert mêlant pêche, violette et muguet pour nourrir l’inspiration, et une base chaleureuse de patchouli, vanille et musc qui ancre vos rêves dans la réalité.  
+                        Ce parfum dit : "Pourquoi pas vous ?"  
+                        Allez-y. Le futur vous attend.`,
+                    notes: {
+                        tete: 'Citron, Orange, Bergamote, Ylang-ylang',
+                        coeur: 'Pêche, Notes vertes, Violette, Muguet',
+                        fond: 'Patchouli, Musc, Vanille'
+                    },
+                    conseils: 'Parfait pour les moments où vous avez besoin d\'inspiration et de motivation.',
+                    intensite: 'Présent',
+                    duree: '7-9 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/think_big_edp_pour_elle.html?productAlias=30701-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'BE FLIRTY': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30714-1/be_flirty_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Séduisante, espiègle, irrésistible.</strong><br>&nbsp;<br>  
+                        Vous ne cherchez pas à plaire… vous séduisez sans effort. Un sourire, un regard, et tout le monde est conquis.<br>&nbsp;<br>  
+                        <strong>BE FLIRTY</strong> est votre complice de charme : une fraîcheur coquine d’orange sanguine et de cassis, un cœur floral délicat de rose et de jasmin qui murmure des secrets, et une base sensuelle de bois de santal, vanille et vétiver qui laisse une empreinte mémorable.  
+                        Subtil, mais impossible à ignorer.  
+                        Parce que la séduction, c’est un jeu… et vous en connaissez toutes les règles.`,
+                    notes: {
+                        tete: 'Orange sanguine, Bergamote, Prune, Cassis',
+                        coeur: 'Rose, Muguet, Jasmin, Patchouli',
+                        fond: 'Bois de santal, Vanille, Vétiver, Musc'
+                    },
+                    conseils: 'Idéal pour les rendez-vous et les moments romantiques.',
+                    intensite: 'Plutôt discrète',
+                    duree: '6-8 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/be_flirty_edp_pour_elle.html?productAlias=30714-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'BE CHEERFUL': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30700-1/edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Joyeuse, vivante, positive.</strong><br>&nbsp;<br>  
+                        Vous décidez aujourd’hui de choisir le bonheur. Chaque instant mérite d’être célébré, même les plus simples.<br>&nbsp;<br>  
+                        <strong>BE CHEERFUL</strong> est votre rayon de soleil en bouteille : une explosion joyeuse de bergamote et d’épices légères, un cœur floral tendre de géranium et de violette, et une base douce de vanille, musc et coumarine qui réchauffe le cœur comme un câlin.  
+                        Portez-le, et laissez la joie vous envahir.  
+                        Parce que la vie est trop courte pour ne pas sourire.`,
+                    notes: {
+                        tete: 'Bergamote, Notes épicées',
+                        coeur: 'Géranium, Rose, Violette',
+                        fond: 'Musc, Vanille, Coumarine, Notes balsamiques'
+                    },
+                    conseils: 'Parfait pour les journées où vous avez besoin d’un coup de boost émotionnel.',
+                    intensite: 'Présent',
+                    duree: '6-8 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/edp_pour_elle.html?productAlias=30700-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'FEEL COMFY': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30713-1/feel_comfy_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Délicate, insouciante, authentique.</strong><br>&nbsp;<br>  
+                        Vous voulez vous sentir bien dans votre peau ? Profiter de la vie sans souci et être simplement vous.<br>&nbsp;<br>  
+                        <strong>FEEL COMFY</strong> est votre cocon olfactif : une fraîcheur fruitée de cassis et de citron, un cœur floral doux de pivoine et de cyclamen, et une base feutrée de musc et de bois secs qui enveloppe comme un pull préféré.  
+                        Pas de fioritures. Juste du confort, de la douceur, et vous.  
+                        Parce que parfois, le plus beau des luxes, c’est la simplicité.`,
+                    notes: {
+                        tete: 'Cassis, Bergamote, Freesia, Citron',
+                        coeur: 'Pivoine, Rose, Cyclamen, Notes florales transparentes',
+                        fond: 'Notes poudrées, Bois de cèdre, Bois secs, Musc'
+                    },
+                    conseils: 'Idéal pour les journées détente ou en week-end.',
+                    intensite: 'Plutôt discrète',
+                    duree: '6-8 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/feel_comfy_edp_pour_elle.html?productAlias=30713-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'ME AMAZE': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30710-1/amaze_me_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Fraîche, étonnante, inoubliable.</strong><br>&nbsp;<br>  
+                        Il vous manque ce petit quelque chose ? Ce parfum laissera une impression durable !<br>&nbsp;<br>  
+                        <strong>ME AMAZE</strong> est une promesse d’émerveillement : une entrée vibrante de mandarine et d’œillet, un cœur opulent de tubéreuse et de fleur d’oranger qui captive, et une base enveloppante de vanille et de musc qui reste gravée dans les mémoires.  
+                        Vous ne cherchez pas l’attention — vous la provoquez naturellement.  
+                        Parce que vous méritez d’être remarquée.`,
+                    notes: {
+                        tete: 'Mandarine, Ylang-ylang, Œillet',
+                        coeur: 'Jasmin, Fleur d\'oranger, Tubéreuse',
+                        fond: 'Musc, Vanille'
+                    },
+                    conseils: 'Parfait pour les événements où vous voulez marquer les esprits.',
+                    intensite: 'Intense',
+                    duree: '8-10 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/amaze_me_edp_pour_elle.html?productAlias=30710-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'FEEL GORGEOUS': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30709-1/feel_gorgeous_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Précieuse, adorable, magnifique.</strong><br>&nbsp;<br>  
+                        Que diriez-vous de vous sentir tout simplement merveilleuse ?<br>&nbsp;<br> 
+                        <strong>FEEL GORGEOUS</strong> vous rappelle que la véritable gentillesse commence en soi.  
+                        Une ouverture fruitée et pétillante d’ananas et d’orange sanguine, un cœur gourmand de poire, prune et pivoine, et une base chaleureuse de bois de santal et de musc blanc.  
+                        Ce parfum est un miroir : il vous renvoie votre propre beauté.  
+                        Parce que vous êtes déjà parfaite — il ne vous reste qu’à le sentir.`,
+                    notes: {
+                        tete: 'Orange sanguine, Ananas, Freesia',
+                        coeur: 'Cassis, Pivoine, Poire, Prune',
+                        fond: 'Musc, Bois de santal, Bois de cèdre blanc'
+                    },
+                    conseils: 'Idéal pour renforcer l’amour-propre et la confiance en soi.',
+                    intensite: 'Affirmée',
+                    duree: '7-9 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/feel_gorgeous_edp_pour_elle.html?productAlias=30709-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'FEEL SHINY': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30708-1/feel_shiny_edp_pour_elle.jpg',
+                    description: `✨ Votre humeur : <strong>Forte, rayonnante, unique.</strong><br>&nbsp;<br>  
+                        Avec <strong>FEEL SHINY</strong>, vous ne portez pas seulement un parfum, mais aussi un éclat qui fait rayonner votre personnalité.<br>&nbsp;<br>
+                        Une fraîcheur marine et fruitée d’orange et de pêche, un cœur floral noble de jasmin, iris et violette, et une base sensuelle de vanille, musc et notes solaires.  
+                        Vous n’avez pas besoin de lumière extérieure — vous en êtes la source.  
+                        Brillez. Toujours.`,
+                    notes: {
+                        tete: 'Orange, Pomme, Pêche, Notes marines',
+                        coeur: 'Jasmin, Rose, Iris, Violette',
+                        fond: 'Bois de cèdre, Vanille, Musc, Notes solaires'
+                    },
+                    conseils: 'Parfait pour affirmer votre individualité et briller en société.',
+                    intensite: 'Affirmée',
+                    duree: '7-9 heures',
+                    genre: 'Femme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/feel_shiny_edp_pour_elle.html?productAlias=30708-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                // === PARFUMS HOMME (7) ===
+                'GET ADDICTED': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30717-1/get_addicted_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Attirant, sûr de soi, séduisant.</strong><br>&nbsp;<br>  
+                        Affirmez-vous avec <strong>GET ADDICTED</strong>, le parfum qui vous rend irrésistible.<br>&nbsp;<br>  
+                        Une ouverture vibrante de citron vert et de genièvre, un cœur audacieux de cuir, safran et poivre rose, et une base profonde de patchouli, musc et bois de santal.  
+                        Ce n’est pas vous qui choisissez ce parfum — c’est lui qui vous choisit.  
+                        Parce que la vraie séduction ne se demande pas… elle s’impose.`,
+                    notes: {
+                        tete: 'Citron vert, Pamplemousse, Genièvre',
+                        coeur: 'Cuir, Safran, Poivre rose',
+                        fond: 'Musc, Patchouli, Bois de santal, Mousse'
+                    },
+                    conseils: 'Idéal pour les soirées ou les moments où vous voulez impressionner.',
+                    intensite: 'Intense',
+                    duree: '8-10 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/get_addicted_edp_pour_lui.html?productAlias=30717-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'WILD THINK': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30703-1/think_wild_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Sauvage, imprévisible, indompté.</strong><br>&nbsp;<br>  
+                        Prêt à suivre votre grain de folie ? Réveillez votre côté sauvage !<br>&nbsp;<br>  
+                        <strong>WILD THINK</strong> commence par une explosion fruitée et verte, se développe avec des notes florales épicées et boisées, et s’installe dans un sillage chaud d’ambre et de musc.  
+                        Vous n’êtes pas fait pour les sentiers battus.  
+                        Vous êtes la forêt. L’instinct. La liberté.`,
+                    notes: {
+                        tete: 'Agrest, Notes fruitées, Pomme',
+                        coeur: 'Notes florales, Notes boisées, Lavande, Notes épicées',
+                        fond: 'Musc, Ambre, Bois de santal'
+                    },
+                    conseils: 'Parfait pour les aventuriers urbains ou les week-ends en pleine nature.',
+                    intensite: 'Présente',
+                    duree: '7-9 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/think_wild_edp_pour_lui.html?productAlias=30703-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'NO BOUNDS': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30716-1/no_bounds_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Inébranlable, déterminé, sûr de sa victoire.</strong><br>&nbsp;<br>  
+                        Rien ne peut vous arrêter ? Lancez-vous sans attendre.<br>&nbsp;<br> 
+                        <strong>NO BOUNDS</strong> allie la fraîcheur énergisante de la bergamote et du pamplemousse à un cœur floral-vert audacieux, le tout ancré dans une base puissante de vétiver, patchouli et musc.  
+                        Ce parfum est votre mantra : "Aucune limite."  
+                        Allez de l’avant. Le monde est à vous.`,
+                    notes: {
+                        tete: 'Bergamote, Pamplemousse',
+                        coeur: 'Géranium, Rose, Rhubarbe',
+                        fond: 'Bois de cèdre, Patchouli, Vétiver, Musc'
+                    },
+                    conseils: 'Idéal avant une présentation, un entretien ou un défi sportif.',
+                    intensite: 'Intense',
+                    duree: '8-10 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/no_bounds_edp_pour_lui.html?productAlias=30716-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'IN FOCUS': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30702-1/in_focus_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Clair, rafraîchissant, revitalisant.</strong><br>&nbsp;<br>  
+                        Commencez la journée l’esprit clair et motivé.<br>&nbsp;<br>  
+                        <strong>IN FOCUS</strong> vous offre une bouffée d’air pur : citron vert, ananas et notes fraîches en tête, lavande et muguet au cœur, musc et vétiver en fond.  
+                        Concentration. Précision. Calme sous pression.  
+                        Votre secret d’efficacité tient dans une simple pulvérisation.`,
+                    notes: {
+                        tete: 'Citron vert, Ananas, Notes fraîches',
+                        coeur: 'Lavande, Violette, Muguet, Mousse',
+                        fond: 'Musc, Ambre, Bois de santal, Vétiver'
+                    },
+                    conseils: 'Parfait pour les matins chargés ou les journées de concentration intense.',
+                    intensite: 'Plutôt discrète',
+                    duree: '6-8 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/in_focus_edp_pour_lui.html?productAlias=30702-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'FEEL SEXY': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30715-1/feel_sexy_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Indompté, séduisant, sexy.</strong><br>&nbsp;<br>  
+                        Libre, doux, rebelle ou magnétique ? Soyez tout à la fois.<br>&nbsp;<br>  
+                        <strong>FEEL SEXY</strong> mêle la chaleur de la cannelle et du poivre à la douceur fruitée de l’orange, puis s’enveloppe dans un sillage sensuel de vanille, ambre et mûre.  
+                        Vous ne cherchez pas à séduire — vous incarnez la séduction.  
+                        Parce que le charisme, ça s’habille… de parfum.`,
+                    notes: {
+                        tete: 'Orange, Bergamote, Notes fruitées',
+                        coeur: 'Cannelle, Poivre, Poivre rose',
+                        fond: 'Bois de cèdre, Mûre, Vanille, Ambre'
+                    },
+                    conseils: 'Idéal pour les rendez-vous ou les soirées en ville.',
+                    intensite: 'Intense',
+                    duree: '8-10 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/feel_sexy_edp_pour_lui.html?productAlias=30715-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'BE BACK': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30712-1/be_back_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Fort, déterminé, puissant.</strong><br>&nbsp;<br>  
+                        Abandonner n'est pas une option. Vous revenez plus fort après chaque échec.<br>&nbsp;<br>  
+                        <strong>BE BACK</strong> ouvre sur une fraîcheur piquante de bergamote et poivre rose, se réchauffe avec une touche de vanille et de fleur d’oranger, et s’ancre dans une base résiliente de fève tonka et bois secs.  
+                        Ce parfum, c’est votre come-back.  
+                        Et cette fois, vous ne laissez plus personne douter de vous.`,
+                    notes: {
+                        tete: 'Bergamote, Citron, Poivre rose',
+                        coeur: 'Fleur d\'oranger, Vanille',
+                        fond: 'Bois secs, Musc, Fève tonka'
+                    },
+                    conseils: 'Parfait pour les moments de résilience ou de rebond.',
+                    intensite: 'Affirmée',
+                    duree: '7-9 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/be_back_edp_pour_lui.html?productAlias=30712-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                },
+                'INTO JUNGLE': {
+                    image: 'https://cdn.lrworld.com/images_cms/images/product/330x450/30711-1/into_jungle_edp_pour_lui.jpg',
+                    description: `✨ Votre humeur : <strong>Puissant, courageux, déterminé.</strong><br>&nbsp;<br>  
+                        Envie de plus d’aventure dans la vie ? Libérez l’aventurier qui sommeille en vous !<br>&nbsp;<br>  
+                        <strong>INTO JUNGLE</strong> commence par une note herbacée et mentholée audacieuse, se développe avec lavande, fleur d’oranger et cèdre, et s’achève dans un sillage chaud de vanille, fève tonka et santal.  
+                        Vous n’êtes pas un spectateur. Vous êtes le héros de votre propre histoire.  
+                        Allez explorer. Le monde vous attend.`,
+                    notes: {
+                        tete: 'Armoise, Menthe, Muguet, Cumin',
+                        coeur: 'Lavande, Fleur d\'oranger, Violette, Bois de cèdre',
+                        fond: 'Vanille, Musc, Fève tonka, Bois de santal'
+                    },
+                    conseils: 'Idéal pour les explorateurs modernes et les esprits libres.',
+                    intensite: 'Intense',
+                    duree: '8-10 heures',
+                    genre: 'Homme',
+                    url: 'https://shop.lrworld.com/product/fr/fr/into_jungle_edp_pour_lui.html?productAlias=30711-1&PHP=mo81%2Fte47iuN5AvnyNKJrw%3D%3D'
+                }
+            };
+
+            // === Génération des cartes parfums ===
+            function renderParfums() {
+                const grid = document.getElementById('parfums-grid');
+                let html = '';
+                for (const [nom, data] of Object.entries(parfumData)) {
+                    const shortDesc = data.description.split('\n')[0].replace('✨ Votre humeur : ', '');
+                    html += `
+                        <div class="col-md-4 parfum-card-item" data-genre="${data.genre.toLowerCase()}">
+                            <div class="card parfum-card">
+                                <img src="${data.image.replace('330x450', '165x225')}" class="card-img-top" alt="${nom}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${nom} <span class="badge">${data.genre}</span></h5>
+                                    <p class="card-text">${shortDesc}</p>
+                                    <a href="${data.url}" target="_blank" rel="noopener" class="btn btn-primary mt-3">Découvrir ce parfum</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                grid.innerHTML = html;
+            }
+
+            // === Filtre interactif ===
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.parfum-card-item').forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.genre === filter) ? 'block' : 'none';
+                    });
+                    document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // === Initialisation ===
+            renderParfums();
+
+            // === Quiz (inchangé) ===
+            let currentQuestion = 1;
+            const totalQuestions = 3;
+            const answers = {};
+            let currentResult = '';
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const resultBtn = document.getElementById('result-btn');
+            const restartQuizBtn = document.getElementById('restart-quiz-btn');
+            const restartFromBoutiqueBtn = document.getElementById('restart-from-boutique');
+            const discoverParfumBtn = document.getElementById('discover-parfum-btn');
+            const quizContainer = document.getElementById('quiz-container');
+            const resultSection = document.getElementById('result-section');
+            const resultContent = document.getElementById('result-content');
+            const progressSteps = document.querySelectorAll('.progress-step');
+
+            function resetQuiz() {
+                currentQuestion = 1;
+                for (let key in answers) delete answers[key];
+                document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const q = document.getElementById(`question${i}`);
+                    q.style.display = (i === 1) ? 'block' : 'none';
+                    if (i === 1) q.classList.add('fade-in');
+                }
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'inline-block';
+                nextBtn.disabled = true;
+                resultBtn.style.display = 'none';
+                updateProgress();
+                quizContainer.style.display = 'block';
+                resultSection.style.display = 'none';
+                document.getElementById('questionnaire').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const q = this.closest('.question');
+                    q.querySelectorAll('.option-card').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const qId = q.id.replace('question', '');
+                    answers[qId] = this.getAttribute('data-value');
+                    if (qId === '1' || qId === '2') nextBtn.disabled = false;
+                    if (qId === '3') resultBtn.disabled = false;
+                });
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentQuestion < totalQuestions) {
+                    document.getElementById(`question${currentQuestion}`).style.display = 'none';
+                    currentQuestion++;
+                    const q = document.getElementById(`question${currentQuestion}`);
+                    q.style.display = 'block';
+                    q.classList.add('fade-in');
+                    updateProgress();
+                    prevBtn.style.display = 'inline-block';
+                    if (currentQuestion === totalQuestions) {
+                        nextBtn.style.display = 'none';
+                        resultBtn.style.display = 'inline-block';
+                    }
+                    nextBtn.disabled = true;
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 1) {
+                    document.getElementById(`question${currentQuestion}`).style.display = 'none';
+                    currentQuestion--;
+                    const q = document.getElementById(`question${currentQuestion}`);
+                    q.style.display = 'block';
+                    q.classList.add('fade-in');
+                    updateProgress();
+                    resultBtn.style.display = 'none';
+                    nextBtn.style.display = 'inline-block';
+                    if (currentQuestion === 1) prevBtn.style.display = 'none';
+                    nextBtn.disabled = false;
+                }
+            });
+
+            resultBtn.addEventListener('click', function() {
+                if (!answers['3']) {
+                    alert("Veuillez choisir votre type de fragrance.");
+                    document.getElementById('question3').scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+                if (Object.keys(answers).length === totalQuestions) {
+                    currentResult = calculateResult();
+                    displayResult(currentResult);
+                    quizContainer.style.display = 'none';
+                    resultSection.style.display = 'block';
+                }
+            });
+
+            discoverParfumBtn.addEventListener('click', function() {
+                if (currentResult && parfumData[currentResult]) {
+                    window.open(parfumData[currentResult].url, '_blank');
+                }
+            });
+
+            [restartQuizBtn, restartFromBoutiqueBtn].forEach(btn => {
+                btn.addEventListener('click', resetQuiz);
+            });
+
+            function updateProgress() {
+                progressSteps.forEach((step, i) => {
+                    step.classList.remove('active', 'completed');
+                    if (i + 1 < currentQuestion) step.classList.add('completed');
+                    else if (i + 1 === currentQuestion) step.classList.add('active');
+                });
+            }
+
+            function calculateResult() {
+                const gender = answers['1'];
+                const mood = answers['2'];
+                const fragrance = answers['3'];
+                if (gender === 'femme') {
+                    const mapping = {
+                        'confiant': { 'florale': 'ME IMPRESS', 'orientale': 'ME AMAZE', 'fruite': 'FEEL GORGEOUS', 'boisee': 'FEEL SHINY' },
+                        'seduisant': { 'orientale': 'BE MAGICAL', 'florale': 'BE FLIRTY', 'fruite': 'BE FLIRTY', 'boisee': 'FEEL SHINY' },
+                        'calme': { 'fruite': 'STAY CALM', 'florale': 'FEEL COMFY', 'orientale': 'BE CHEERFUL', 'boisee': 'STAY CALM' },
+                        'energique': { 'fruite': 'FEEL SAVAGE', 'florale': 'BE CHEERFUL', 'boisee': 'BIG THINK', 'orientale': 'BIG THINK' }
+                    };
+                    return mapping[mood]?.[fragrance] || 'BE MAGICAL';
+                } else {
+                    const mapping = {
+                        'confiant': { 'boisee': 'NO BOUNDS', 'orientale': 'BE BACK', 'fruite': 'NO BOUNDS', 'florale': 'IN FOCUS' },
+                        'seduisant': { 'boisee': 'GET ADDICTED', 'orientale': 'FEEL SEXY', 'fruite': 'FEEL SEXY', 'florale': 'GET ADDICTED' },
+                        'calme': { 'fruite': 'IN FOCUS', 'boisee': 'BE BACK', 'orientale': 'IN FOCUS', 'florale': 'IN FOCUS' },
+                        'energique': { 'fruite': 'WILD THINK', 'boisee': 'INTO JUNGLE', 'orientale': 'NO BOUNDS', 'florale': 'WILD THINK' }
+                    };
+                    return mapping[mood]?.[fragrance] || 'GET ADDICTED';
+                }
+            }
+
+            function displayResult(parfumName) {
+                const parfum = parfumData[parfumName];
+                if (!parfum) return;
+                let html = `
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <img src="${parfum.image}" alt="${parfumName}" class="img-fluid rounded shadow">
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="mb-3">${parfumName} <span class="badge">${parfum.genre}</span></h3>
+                            <p class="mb-4">${parfum.description}</p>
+                            <div class="notes-section mb-4">
+                                <div class="note-type">
+                                    <h6>Notes de tête</h6>
+                                    <p>${parfum.notes.tete}</p>
+                                </div>
+                                <div class="note-type">
+                                    <h6>Notes de cœur</h6>
+                                    <p>${parfum.notes.coeur}</p>
+                                </div>
+                                <div class="note-type">
+                                    <h6>Notes de fond</h6>
+                                    <p>${parfum.notes.fond}</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <strong>Intensité:</strong> 
+                                    <span class="intensity-badge" style="background-color: ${getIntensityColor(parfum.intensite)}; color: white;">${parfum.intensite}</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Durée:</strong> ${parfum.duree}
+                                </div>
+                            </div>
+                            <div class="parfum-details">
+                                <h6>Conseils d'application:</h6>
+                                <p>${parfum.conseils}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultContent.innerHTML = html;
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function getIntensityColor(intensity) {
+                if (intensity.includes('Intense')) return '#4A2C2A';
+                if (intensity.includes('Affirmée')) return '#6B5D4D'; 
+                if (intensity.includes('Présent')) return '#5E7D70';
+                return '#6E6E6E';
+            }
+
+            updateProgress();
+            prevBtn.style.display = 'none';
+            nextBtn.disabled = true;
+            resultBtn.disabled = true;
+        });
+    </script>
+
+    <!-- Bouton "Remonter en haut" -->
+    <button id="backToTop" class="btn btn-primary" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1030; padding: 10px 15px; border-radius: 50%;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Affichage du bouton après un certain défilement
+        window.addEventListener('scroll', function () {
+            const button = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Défilement fluide vers le haut
+        document.getElementById('backToTop').addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+</html>
