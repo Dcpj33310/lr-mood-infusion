@@ -399,7 +399,7 @@
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-4 mb-md-0">
                     <h2 class="section-title">LR MOOD INFUSION : La science des émotions olfactives</h2>
                     <p>Saviez-vous que l'odorat est le seul sens directement connecté à notre système limbique, le centre des émotions et de la mémoire ? Contrairement aux stimuli visuels ou auditifs, les odeurs ont un effet immédiat et intense sur notre état émotionnel.</p>
                     <p>Avec <strong>MOOD INFUSION</strong>, LR a créé une collection de parfums qui ne se contente pas de sentir bon, mais qui vous connecte à l'émotion que vous souhaitez ressentir. Chaque fragrance a été méticuleusement développée pour évoquer des sentiments spécifiques : joie pure, paix intérieure, énergie vivifiante ou force confiante.</p>
@@ -413,7 +413,7 @@
     </section>
 
     <!-- Features -->
-    <section class="py-5 bg-light">
+    <section class="py-1 bg-light">
         <div class="container">
             <h2 class="section-title text-center">Pourquoi choisir LR MOOD INFUSION ?</h2>
             <div class="row text-center">
@@ -443,7 +443,7 @@
     </section>
 
     <!-- Parfums Section -->
-    <section id="parfums" class="py-5">
+    <section id="parfums" class="py-1">
         <div class="container">
             <h2 class="section-title text-center">Découvrez notre collection exclusive</h2>
             <p class="text-center mb-5">Des parfums pour chaque humeur, chaque personnalité, chaque moment de la vie. Explorez la nouvelle gamme complète de fragrances émotionnelles.</p>
@@ -627,7 +627,7 @@
     </section>
 
     <!-- Boutique Section -->
-    <section id="boutique" class="py-5">
+    <section id="boutique" class="py-1">
         <div class="container">
             <h2 class="section-title text-center">Prêt à trouver votre parfum idéal ?</h2>
             <div class="row align-items-center">
@@ -655,7 +655,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="py-5 bg-light">
+    <section class="py-1 bg-light">
         <div class="container">
             <h2 class="section-title text-center">Questions fréquentes</h2>
             <div class="row">
@@ -1138,6 +1138,17 @@
                         resultBtn.style.display = 'inline-block';
                     }
                     nextBtn.disabled = true;
+
+                    // ⬇️ Ancrage fluide avec décalage pour laisser le h4 visible
+                    const questionTitle = q.querySelector('h4');
+                    if (questionTitle) {
+                        const offsetTop = questionTitle.getBoundingClientRect().top + window.scrollY;
+                        const navbarHeight = 80; // Hauteur approximative de la navbar + un peu d'espace
+                        window.scrollTo({
+                            top: offsetTop - navbarHeight,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
 
