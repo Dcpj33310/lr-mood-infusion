@@ -360,7 +360,7 @@
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-spa me-2"></i>LR Health and Beauty
+                <i class="fas fa-spa me-2"></i>LR Health and Beauty - Mood Infusion
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -577,7 +577,7 @@
                             <!-- Le résultat sera affiché ici par JavaScript -->
                         </div>
                         <div class="mt-4">
-                            <button id="discover-parfum-btn" class="btn btn-primary btn-lg me-3">
+                            <button id="discover-parfum-btn" class="btn btn-primary btn-lg me-3 mb-3 mb-md-0">
                                 <i class="fas fa-shopping-bag me-2"></i>Découvrir ce parfum
                             </button>
                             <button id="restart-quiz-btn" class="btn btn-outline-primary">
@@ -1165,6 +1165,12 @@
                     displayResult(currentResult);
                     quizContainer.style.display = 'none';
                     resultSection.style.display = 'block';
+
+                    // ⬇️ Ajout du défilement vers le titre du résultat
+                    const resultTitle = document.querySelector('#result-section .section-title');
+                    if (resultTitle) {
+                        resultTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 }
             });
 
@@ -1269,9 +1275,28 @@
     </script>
 
     <!-- Bouton "Remonter en haut" -->
-    <button id="backToTop" class="btn btn-primary" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1030; padding: 10px 15px; border-radius: 50%;">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button id="backToTop" style="
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1030;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: transform 0.2s, background-color 0.2s;
+">
+    <i class="fas fa-arrow-up"></i>
+</button>
 
     <script>
         // Affichage du bouton après un certain défilement
